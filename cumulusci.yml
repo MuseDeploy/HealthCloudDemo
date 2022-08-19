@@ -1,0 +1,190 @@
+minimum_cumulusci_version: "3.60.0"
+project:
+  name: HealthCloud
+  package:
+    name: Health Cloud Installer Demo
+    api_version: "54.0"
+  git:
+    default_branch: "main"
+  source_format: sfdx
+  dependencies:
+    # Health Cloud managed package
+    - package_name: Health Cloud
+      version_id: 04t4W000002g20RQAQ
+
+tasks:
+  install_omnistudio:
+    group: Health Cloud Extensions
+    description: Install the latest production version of OmniStudio
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: OmniStudio
+          version_id: 04t4W000002ke6c
+
+  install_wave:
+    group: Health Cloud Extensions
+    description: "Install the CRM Analytics for Health Cloud: Risk Stratification Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: CRM Analytics for Health Cloud Risk Stratification
+          version_id: 04t4W000002ke6c
+
+  install_erm:
+    group: Health Cloud Extensions
+    description: "Install the Emergency Response Management Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Emergency Response Management
+          version_id: 04t3c000000uXRr
+
+  install_field_service:
+    group: Health Cloud Extensions
+    description: "Install the Field Service Flows for Health Cloud Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Field Service Flows
+          version_id: 04tf4000003IqZS
+
+  install_patient_app:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud App Template for Patients Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: App Template for Patients
+          version_id: 04tf4000004Bxju
+
+  install_care_request:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud Care Request Extensions Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Care Request
+          version_id: 04tf4000004BxjG
+
+  install_claims:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud Claims Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Claims
+          version_id: 04tf4000003Ir7p
+
+  install_flow_templates:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud Flow Templates for Payers Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Flow Templates for Payers
+          version_id: 04tf4000003zYs4
+
+  install_referral_mgmt:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud Reports for Patient Referral Management Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Reports for Patient Referral Management
+          version_id: 04tf4000004Bx0O
+
+  install_lead_conversion:
+    group: Health Cloud Extensions
+    description: "Install the Health Cloud Lead to Patient Conversion Unmanaged Package"
+    class_path: cumulusci.tasks.salesforce.UpdateDependencies
+    options:
+      dependencies:
+        - package_name: Lead to Patient Conversion
+          version_id: 04t5w0000048cTh
+
+  robot:
+    options:
+      suites: robot/HealthCloud/tests
+      options:
+        outputdir: robot/HealthCloud/results
+
+  robot_testdoc:
+    options:
+      path: robot/HealthCloud/tests
+      output: robot/HealthCloud/doc/HealthCloud_tests.html
+
+  run_tests:
+    options:
+      required_org_code_coverage_percent: 75
+
+flows:
+  customer_org:
+    description: A base installation for customers
+    steps:
+      1:
+        task: update_dependencies
+      2:
+        task: assign_permission_set_license
+        options:
+          api_names:
+            - HealthCloudPermissionSetLicense
+      2:
+        task: assign_permission_sets
+        options:
+          api_names:
+            - HealthCloudAdmin
+            - HealthCloudApi
+            - HealthCloudFoundation
+            - HealthCloudLimited
+            - HealthCloudMemberServices
+            - HealthCloudSocialDeterminants
+            - HealthCloudStandard
+            - HealthCloudUtilizationManagement
+            
+
+  customer_org_full:
+    description: A complete installation of all extensions and config
+    steps:
+      1:
+        flow: customer_org
+      2:
+        task: install_omnistudio
+        ui_options:
+          is_required: False
+      3:
+        task: install_wave
+        ui_options:
+          is_required: False
+      #4:
+      #  task: install_erm
+      #  ui_options:
+      #    is_required: False
+      5:
+        task: install_field_service
+        ui_options:
+          is_required: False
+      6:
+        task: install_patient_app
+        ui_options:
+          is_required: False
+      7:
+        task: install_care_request
+        ui_options:
+          is_required: False
+      8:
+        task: install_claims
+        ui_options:
+          is_required: False
+      9:
+        task: install_flow_templates
+        ui_options:
+          is_required: False
+      10:
+        task: install_referral_mgmt
+        ui_options:
+          is_required: False
+      11:
+        task: install_lead_conversion
+        ui_options:
+          is_required: False
