@@ -188,3 +188,36 @@ flows:
         task: install_lead_conversion
         ui_options:
           is_required: False
+
+plans:
+  install:
+    slug: install
+    title: Install Health Cloud Base
+    tier: secondary
+    is_listed: True
+    preflight_message: "This will install the Health Cloud managed package into your org and grant permissions sets"
+    post_install_message: "Thank you for installing.  This is only a demo but normally this content would contain links to next steps"
+    error_message: "To get help with this error... this is only a demo but normally links for next steps would be here"
+    checks:
+      - when: "not tasks.check_chatter_enabled()"
+        action: error
+        message: "Health Cloud requires Chatter. Please enable Chatter in your org and try again."
+    steps:
+      1:
+        flow: customer_org
+        
+  install_full:
+    slug: install
+    title: Install Health Cloud and Extensions
+    tier: primary
+    is_listed: True
+    preflight_message: "This will install and configure Health Cloud and Extensions in your org"
+    post_install_message: "Thank you for installing.  This is only a demo but normally this content would contain links to next steps"
+    error_message: "To get help with this error... this is only a demo but normally links for next steps would be here"
+    checks:
+      - when: "not tasks.check_chatter_enabled()"
+        action: error
+        message: "Health Cloud requires Chatter. Please enable Chatter in your org and try again."
+    steps:
+      1:
+        flow: customer_org_full
