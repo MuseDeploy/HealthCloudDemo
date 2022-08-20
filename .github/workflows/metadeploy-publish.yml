@@ -1,0 +1,12 @@
+name: Feature Test
+on:
+  release:
+    types: [published]
+jobs:
+  feature-test:
+    name: "Feature Test"
+    # Replace this URL with your forked repo.
+    uses: musedeploy/standard-workflows/.github/workflows/musedeploy-publish.yml@main
+    secrets:
+      dev-hub-auth-url: "${{ secrets.DEV_HUB_AUTH_URL }}"
+      cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
