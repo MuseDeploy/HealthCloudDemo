@@ -9,6 +9,6 @@ on:
 jobs:
   feature-test:
     name: "Create Release in GitHub"
-    uses: MuseDeploy/standard-workflows/.github/workflows/create-release-unmanaged.yml@main
+    uses: musedeploy/standard-workflows/.github/workflows/create-release-unmanaged.yml@main
     with:
       version: "${{ github.event.release.tag_name }}"
