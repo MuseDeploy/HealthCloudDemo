@@ -7,7 +7,6 @@ jobs:
     name: "MuseDeploy Publish"
     uses: musedeploy/standard-workflows/.github/workflows/musedeploy-publish.yml@main
     secrets:
-      dev-hub-auth-url: "${{ secrets.DEV_HUB_AUTH_URL }}"
       cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
     with:
       tag: "${{ github.release.tag_name }}"
