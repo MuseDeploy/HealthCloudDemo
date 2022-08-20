@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
+        description: The version number to use in creating the release
         required: true
         type: string
 
