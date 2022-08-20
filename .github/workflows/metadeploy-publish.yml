@@ -9,4 +9,4 @@ jobs:
     secrets:
       cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
     with:
-      tag: "${{ github.release.tag_name }}"
+      tag: "${{ github.event.release.tag_name }}"
