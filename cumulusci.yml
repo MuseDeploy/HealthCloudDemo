@@ -156,10 +156,10 @@ flows:
         task: install_wave
         ui_options:
           is_required: False
-      #4:
-      #  task: install_erm
-      #  ui_options:
-      #    is_required: False
+      4:
+        task: install_erm
+        ui_options:
+          is_required: False
       5:
         task: install_field_service
         ui_options:
@@ -205,7 +205,7 @@ plans:
     steps:
       1:
         flow: customer_org
-        
+
   install_full:
     slug: install
     title: Install Health Cloud and Extensions
