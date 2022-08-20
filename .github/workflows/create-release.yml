@@ -12,4 +12,4 @@ jobs:
     name: "Create Release in GitHub"
     uses: musedeploy/standard-workflows/.github/workflows/create-release-unmanaged.yml@main
     with:
-      version: "${{ input.version }}"
+      version: "${{ inputs.version }}"
