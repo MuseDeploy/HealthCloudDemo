@@ -1,0 +1,13 @@
+name: Feature Test
+on:
+  push:
+    branches:
+      - feature/**
+      - main
+jobs:
+  feature-test:
+    name: "Feature Test"
+    # Replace this URL with your forked repo.
+    uses: cumulus-actions/standard-workflows/.github/workflows/feature.yml@main
+    secrets:
+      dev-hub-auth-url: '${{ secrets.DEV_HUB_AUTH_URL }}'
