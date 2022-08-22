@@ -3,7 +3,7 @@ on:
   release:
     types: [published]
 jobs:
-  feature-test:
+  metadeploy-publish:
     name: "MuseDeploy Publish"
     uses: musedeploy/standard-workflows/.github/workflows/musedeploy-publish.yml@main
     secrets:

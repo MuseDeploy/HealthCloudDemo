@@ -1,15 +1,27 @@
 {
   "orgName": "Health Cloud Installer Demo - Feature Test Org",
   "edition": "Developer",
+  "features": [
+    "AnalyticsAdminPerms",
+    "Communities",
+    "ContactsToMultipleAccounts",
+    "HealthCloudAddOn",
+    "Knowledge",
+    "OmniStudioDesigner",
+    "PersonAccounts"
+  ],
   "settings": {
-    "lightningExperienceSettings": {
-      "enableS1DesktopEnabled": true
-    },
     "chatterSettings": {
       "enableChatter": true
     },
-    "userManagementSettings": {
-      "enableNewProfileUI": true
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
     },
     "securitySettings": {
       "enableAdminLoginAsAnyUser": true,
@@ -17,8 +29,8 @@
         "forceRelogin": false
       }
     },
-    "languageSettings": {
-      "enableTranslationWorkbench": true
+    "userManagementSettings": {
+      "enableNewProfileUI": true
     }
   }
 }
